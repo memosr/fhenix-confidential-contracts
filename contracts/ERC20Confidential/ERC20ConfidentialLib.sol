@@ -287,7 +287,7 @@ library ERC20ConfidentialLib {
         emit UnshieldedTokensClaimed(claim.to, id, FHE.wrapEuint64(claim.ctHash), claim.decryptedAmount);
     }
 
-    /// @dev Reverts on `to == address(0)`, mirroring {FHERC20Core-_mint}: otherwise the pool gains
+    /// @dev Reverts on `to == address(0)`, like {FHERC20Core-_mint}: otherwise the pool gains
     /// public backing that no confidential balance owns and that can never be unshielded.
     function confidentialMint(address to, uint64 amount) public {
         if (to == address(0)) revert ConfidentialInvalidReceiver(address(0));
